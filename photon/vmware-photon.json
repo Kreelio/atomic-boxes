@@ -1,0 +1,74 @@
+{
+  "variables": {
+    "product_version": "3.0GA",
+    "root_password": "2RQrZ83i79N6szpvZNX6",
+    "iso_checksum": "1c38dd6d00e11d3cbf7768ce93fc3eb8913a9673",
+    "iso_checksum_type": "sha1",
+    "disk_size": "40000",
+    "boot_wait": "2s"
+  },
+  "builders": [
+    {
+      "type": "qemu",
+      "iso_url": "http://dl.bintray.com/vmware/photon/3.0/GA/iso/photon-3.0-26156e2.iso",
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_checksum_type": "{{ user `iso_checksum_type` }}",
+      "output_directory": "builds",
+      "shutdown_command": "shutdown -h now",
+      "disk_size": "{{ user `disk_size` }}",
+      "format": "qcow2",
+      "accelerator": "kvm",
+      "net_device": "virtio-net",
+      "disk_interface": "virtio",
+      "vm_name": "vmware-photon-{{user `product_version` }}.qcow2",
+      "boot_wait": "{{user `boot_wait` }}",
+      "ssh_username": "root",
+      "ssh_password": "{{user `root_password`}}",
+      "http_directory": "scripts",
+      "boot_command": [
+        "<esc><wait>",
+        "vmlinuz initrd=initrd.img root=/dev/ram0 loglevel=3 ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/photon-kickstart.json photon.media=cdrom",
+        "<enter>"
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "scripts/photon-package_provisioning.sh"
+    },
+    {
+      "type": "shell",
+      "script": "scripts/photon-vagrant-user_provisioning.sh"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sed -i '/linux/ s/$/ net.ifnames=0/' /boot/grub2/grub.cfg"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "echo 'GRUB_CMDLINE_LINUX=\"net.ifnames=0\"' >> /etc/default/grub"
+      ]
+    },
+    {
+      "type": "shell",
+      "script": "scripts/photon-security_check.sh"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sed -i 's/OS/Linux/' /etc/photon-release"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "compression_level": 9,
+      "output": "photon-{{user `product_version`}}-{{.BuildName}}.box"
+    }
+  ]
+}
