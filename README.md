@@ -2,8 +2,6 @@
 
 Vagrant boxes with Atomic OS like VMware-Photon / CoreOS / Feroda-CoreOS
 
-# [![Gitlab-CI](https://gitlab.com/actiniumio/atomic-boxes/badges/master/build.svg)](https://gitlab.com/actiniumio/atomic-boxes/pipelines)
-
 This repository contains files used by [Packer](https://www.packer.io/) to create images for Vagrant Cloud with Atomic OS
 
 ####Table of Contents
