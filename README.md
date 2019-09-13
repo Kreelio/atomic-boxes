@@ -8,7 +8,7 @@ This repository contains files used by [Packer](https://www.packer.io/) to creat
 
 1. [Overview](#overview)
 2. [Requirements](#requirements)
-3. [Building](#building)
+3. [Building](#installation)
 
 ## Overview
 
