@@ -4,7 +4,7 @@ Vagrant boxes with Atomic OS like VMware-Photon / CoreOS / Feroda-CoreOS
 
 This repository contains files used by [Packer](https://www.packer.io/) to create images for Vagrant Cloud with Atomic OS
 
-####Table of Contents
+#### Table of Contents
 
 1. [Overview](#overview)
 2. [Requirements](#requirements)
