@@ -12,7 +12,11 @@ This repository contains files used by [Packer](https://www.packer.io/) to creat
 
 ## Overview
 
-CoreOS provides Vagrant boxes for each release, in formats compatible with the [VirtualBox](http://alpha.release.core-os.net/amd64-usr/current/coreos_production_vagrant.json) and [VMware Fusion](http://alpha.release.core-os.net/amd64-usr/current/coreos_production_vagrant_vmware_fusion.json) providers. However, they do not (at the time of this writing) provide a Vagrant box for use with the libvirt provider. This repository provides a Packer template that can build such a box.
+CoreOS provides Vagrant boxes for each release, in formats compatible with the [VirtualBox](http://alpha.release.core-os.net/amd64-usr/current/coreos_production_vagrant.json) and [VMware Fusion](http://alpha.release.core-os.net/amd64-usr/current/coreos_production_vagrant_vmware_fusion.json) providers. 
+
+However, they do not (at the time of this writing) provide a Vagrant box up-to-date for use with the libvirt provider. 
+
+This repository provides a Packer template that can build such a box.
 
 ## Requirements
 
