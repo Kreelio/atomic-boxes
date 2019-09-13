@@ -10,11 +10,11 @@ This repository contains files used by [Packer](https://www.packer.io/) to creat
 2. [Requirements](#requirements)
 3. [Building](#building)
 
-##Overview
+## Overview
 
 CoreOS provides Vagrant boxes for each release, in formats compatible with the [VirtualBox](http://alpha.release.core-os.net/amd64-usr/current/coreos_production_vagrant.json) and [VMware Fusion](http://alpha.release.core-os.net/amd64-usr/current/coreos_production_vagrant_vmware_fusion.json) providers. However, they do not (at the time of this writing) provide a Vagrant box for use with the libvirt provider. This repository provides a Packer template that can build such a box.
 
-##Requirements
+## Requirements
 
 For box creation:
 
@@ -45,7 +45,6 @@ $ make coreos
 $ make photon
 ```
 ## Without Makefile
-Without buidling from the Makefile
 
 ### Basic example
 ```
