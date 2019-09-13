@@ -1,0 +1,8 @@
+builds/
+container-linux-config.yml
+ignition.json
+*.tar.gz
+*.box
+packer_cache
+output/
+temp/
